@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS HUB</title>
+    <link rel="stylesheet" href="hub.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h1>NEXUS</h1>
+            <button class="active" data-section="dashboard"><i class="fas fa-home"></i> Dashboard</button>
+            <button data-section="suppliers"><i class="fas fa-truck"></i> Proveedores</button>
+            <button data-section="documents"><i class="fas fa-folder"></i> Documentos</button>
+            <button data-section="passwords"><i class="fas fa-lock"></i> Contraseñas</button>
+            <div class="search">
+                <input type="text" id="searchInput" placeholder="Buscar...">
+                <i class="fas fa-search"></i>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <section id="dashboard" class="content-section active">
+                <h2><i class="fas fa-home"></i> Recursos Recientes</h2>
+                <div class="grid" id="resourcesGrid"></div>
+                <button class="add-btn" id="newResourceBtn"><i class="fas fa-plus"></i> Nuevo Recurso</button>
+            </section>
+
+            <section id="suppliers" class="content-section">
+                <h2><i class="fas fa-truck"></i> Gestión de Proveedores</h2>
+                <form id="supplierForm">
+                    <input type="text" placeholder="Nombre" id="supplierName" required>
+                    <input type="tel" placeholder="Teléfono" id="supplierPhone" pattern="[0-9]{9}" required>
+                    <input type="text" placeholder="Horario" id="supplierSchedule">
+                    <input type="url" placeholder="Enlace Google Maps" id="supplierLocation">
+                    <button type="submit"><i class="fas fa-save"></i> Guardar</button>
+                </form>
+                <div class="suppliers-list" id="suppliersList"></div>
+            </section>
+
+            <section id="documents" class="content-section">
+                <h2><i class="fas fa-folder"></i> Documentos Corporativos</h2>
+                <div class="docs-container" id="docsContainer"></div>
+            </section>
+
+            <section id="passwords" class="content-section">
+                <h2><i class="fas fa-lock"></i> Gestión de Accesos</h2>
+                <div class="password-list" id="passwordList"></div>
+            </section>
+        </div>
+    </div>
+
+    <div id="resourceModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Nuevo Recurso</h3>
+            <form id="resourceForm">
+                <select id="resourceType">
+                    <option value="text">Texto</option>
+                    <option value="image">Imagen</option>
+                    <option value="link">Enlace</option>
+                    <option value="doc">Documento</option>
+                    <option value="password">Contraseña</option>
+                </select>
+                <input type="text" id="resourceTitle" placeholder="Título" required>
+                <textarea id="resourceContent" placeholder="Contenido/URL" required></textarea>
+                <input type="text" id="resourceTags" placeholder="Etiquetas (separar por comas)">
+                <button type="submit"><i class="fas fa-save"></i> Guardar</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="hub.js"></script>
+</body>
+</html>
